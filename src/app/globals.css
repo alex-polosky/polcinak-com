@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+/*
+ * Theme is driven by `data-theme` on <html> (set before paint by the inline
+ * script in layout.tsx). Components use semantic tokens (bg-canvas, text-fg,
+ * border-line, ...) so they never need per-theme class pairs.
+ */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+@custom-variant light (&:where([data-theme="light"], [data-theme="light"] *));
+
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+  --canvas: #15191c;
+  --surface: #20272b;
+  --surface-alt: #1b2124;
+  --line: #3b474d;
+  --line-soft: #2c353a;
+  --fg: #f2f5f4;
+  --muted: #afbcc1;
+  --subtle: #788991;
+  --accent: #25b8b2;
+  --accent-hover: #2ed4cd;
+  --on-accent: #15191c;
+  --grid-line: rgba(59, 71, 77, 0.18);
+  --dot: rgba(37, 184, 178, 0.25);
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+  --canvas: #f5f7f6;
+  --surface: #ffffff;
+  --surface-alt: #ebefef;
+  --line: #d0d9dc;
+  --line-soft: #d0d9dc;
+  --fg: #15191c;
+  --muted: #526066;
+  --subtle: #66767d;
+  --accent: #0d7b76;
+  --accent-hover: #0a6460;
+  --on-accent: #ffffff;
+  --grid-line: rgba(208, 217, 220, 0.45);
+  --dot: rgba(13, 123, 118, 0.2);
+}
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-surface-alt: var(--surface-alt);
+  --color-line: var(--line);
+  --color-line-soft: var(--line-soft);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-on-accent: var(--on-accent);
+  /* Brand teal, identical in both themes; used for small signal marks. */
+  --color-signal: #25b8b2;
+
+  --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo,
+    monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--canvas);
+  color: var(--fg);
+  transition:
+    background-color 200ms,
+    color 200ms;
+}
+
+::selection {
+  background: color-mix(in srgb, #25b8b2 30%, transparent);
+  color: var(--fg);
+}
+
+/* Technical grid pattern */
+.bg-grid-pattern {
+  background-size: 32px 32px;
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+}
+
+/* Blueprint dot pattern */
+.bg-dot-pattern {
+  background-image: radial-gradient(var(--dot) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
