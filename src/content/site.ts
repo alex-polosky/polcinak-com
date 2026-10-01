@@ -11,6 +11,7 @@ export type Link = {
   label: string;
   href: string;
   external?: boolean;
+  disabled?: boolean;
 };
 
 export type BusinessStatus = "active" | "soon";
@@ -73,7 +74,7 @@ export type ContactRoute = {
 export const site = {
   name: "The Polcinak Group",
   wordmark: "POLCINAK",
-  tagline: "Independent businesses. Shared ambition.",
+  tagline: "Good ideas. Made real.",
   description:
     "A family-owned group in Northeast Ohio, building across software engineering, print production, and tabletop gaming.",
   url: "https://polcinak.com",
@@ -90,8 +91,8 @@ export const nav: NavItem[] = [
 
 export const hero = {
   chip: "Family-owned · Northeast Ohio",
-  headline: "Independent businesses.",
-  headlineAccent: "Shared ambition.",
+  headline: "Good ideas.",
+  headlineAccent: "Made real.",
   body: site.description,
   primaryCta: { label: "Explore Our Businesses", href: "#businesses" },
   secondaryCta: { label: "Get in Touch", href: "#contact" },
@@ -130,7 +131,7 @@ export const businesses: Business[] = [
       href: "https://alex.polosky.com",
       external: true,
     },
-    email: "alex@polosky.com",
+    email: "alex@polcinak.com",
   },
   {
     id: "printing",
@@ -145,13 +146,14 @@ export const businesses: Business[] = [
     visual: {
       kind: "fabrication",
       topLeft: "FAB // MULTI-LAYER BED",
-      topRight: "TOLERANCE 0.05mm",
-      bottomLeft: "SURFACES: POLYMER / CANVAS",
-      bottomRight: "CALIBRATION",
+      topRight: "",
+      bottomLeft: "SURFACES: POLYMER / CANVAS / PHOTO",
+      bottomRight: "",
     },
     cta: {
-      label: "Contact Printing",
-      href: "mailto:prints@polcinak.com?subject=Polcinak%20Printing%20Inquiry",
+      label: "Explore Printing (coming soon!)",
+      href: "",
+      disabled: true
     },
     email: "prints@polcinak.com",
   },
@@ -169,13 +171,14 @@ export const businesses: Business[] = [
     visual: {
       kind: "terrain",
       topLeft: "GRID // 1-INCH TACTICAL",
-      topRight: "SCALE 28mm-32mm",
-      bottomLeft: "BOX: MODULAR TERRAIN",
-      bottomRight: "SYSTEM READY",
+      topRight: "",
+      bottomLeft: "BOXES: PREMIUM ENCOUNTERS",
+      bottomRight: "",
     },
     cta: {
-      label: "Contact Terracast Games",
-      href: "mailto:info@terracast.games?subject=Terracast%20Games%20Inquiry",
+      label: "Terrcast Games (coming soon!)",
+      href: "",
+      disabled: true
     },
     email: "info@terracast.games",
   },
@@ -221,11 +224,11 @@ export const structure = {
           statusLabel: "Available Now",
           description:
             "Client engagements, engineering direction, and production web applications.",
-          link: {
-            label: "alex.polosky.com",
-            href: "https://alex.polosky.com",
-            external: true,
-          },
+          // link: {
+          //   label: "alex.polosky.com",
+          //   href: "https://alex.polosky.com",
+          //   external: true,
+          // },
         },
       ],
     },
@@ -257,10 +260,10 @@ export const structure = {
           imprints,
         },
       ],
-      contact: {
-        label: "Ventures Platform Contact:",
-        email: "ventures@polcinak.com",
-      },
+      // contact: {
+      //   label: "Ventures Platform Contact:",
+      //   email: "ventures@polcinak.com",
+      // },
     },
   ] satisfies StructureBranch[],
 };
@@ -294,7 +297,7 @@ export const contact = {
       title: "Consulting",
       description:
         "For custom web applications, software engineering consulting, and SaaS product roadmaps.",
-      email: "alex@polosky.com",
+      email: "alex@polcinak.com",
     },
     {
       index: "02",
@@ -339,10 +342,10 @@ export const footer = {
     { label: "terracast.games (Soon)" },
   ] as { label: string; href?: string }[],
   emails: [
-    "alex@polosky.com",
+    "alex@polcinak.com",
     "ventures@polcinak.com",
     "prints@polcinak.com",
     "info@terracast.games",
   ],
-  bottomNotes: ["Based in Northeast Ohio", "Precision Industrial Design"],
+  bottomNotes: ["Based in Northeast Ohio", "Good ideas", "Made real"],
 };

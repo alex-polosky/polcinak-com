@@ -74,7 +74,7 @@ export function BusinessCard({ business }: { business: Business }) {
         </div>
 
         <div className="space-y-3 border-t border-line pt-6">
-          <a
+          {!cta.disabled ? <a
             href={cta.href}
             {...(cta.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
             className={`inline-flex w-full items-center justify-between px-4 py-2.5 font-mono text-xs font-medium transition-colors focus:ring-2 focus:ring-signal focus:outline-none ${
@@ -88,8 +88,13 @@ export function BusinessCard({ business }: { business: Business }) {
               <ExternalLinkIcon className="ml-1 h-3.5 w-3.5" />
             ) : (
               <MailIcon className="ml-1 h-3.5 w-3.5" />
-            )}
-          </a>
+            )
+            }
+          </a> : <a
+            className={`inline-flex w-full items-center justify-between px-4 py-2.5 font-mono text-xs font-medium transition-colors focus:ring-2 focus:ring-signal focus:outline-none border border-line bg-canvas text-fg`}
+          >
+            <span>{cta.label}</span>
+          </a>}
           <div className="flex items-center justify-between pt-1 font-mono text-xs">
             <span className="text-subtle">Direct Inquiry:</span>
             <a
