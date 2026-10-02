@@ -127,7 +127,7 @@ export const businesses: Business[] = [
       bottomRight: "</>",
     },
     cta: {
-      label: "Explore Consulting",
+      label: "Meet the consultant",
       href: "https://alex.polosky.com",
       external: true,
     },

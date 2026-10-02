@@ -11,6 +11,12 @@ npm run lint
 npm run build    # static production build
 ```
 
+## Deployment
+
+Pushes to `main` deploy the static export to GitHub Pages through the workflow in `.github/workflows/deploy.yml`.
+
+In the repository's **Settings → Pages**, set the source to **GitHub Actions**. Configure DNS for `polcinak.com` to point to GitHub Pages; the build includes `public/CNAME` so Pages keeps the custom domain.
+
 ## Layout
 
 - `src/content/site.ts` — all copy, links, businesses, structure, and contact routes. Most content edits happen here.
